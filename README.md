@@ -1,2 +1,2 @@
 # fasalalert
-Real-time crop stress advisory dashboard.
+Real-Time Crop Stress & Weather Risk Advisory Dashboard
