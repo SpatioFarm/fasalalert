@@ -111,12 +111,9 @@ Where:
 When **"Fetch & Analyse"** is clicked:
 1. GeoPandas loads `india_districts.geojson` and extracts centroid
    coordinates for all selected districts.
-2. Requests calls OpenWeatherMap API for each district centroid
-   (batched with a short delay to respect rate limits).
-3. Fetched weather values are compared against IMD normals to compute
-   anomalies (ΔTemp, ΔRainfall, ΔHumidity).
-4. CSS is computed per district using crop- and stage-specific weights
-   from `crop_thresholds.json`.
+2. Each district centroid's request calls the OpenWeatherMap API (batched with a little wait to satisfy rate constraints).
+3. Anomalies (ΔTemp, ΔRainfall, ΔHumidity) are calculated by comparing fetched weather values to IMD normals.
+4. Crop- and stage-specific weights from `crop_thresholds.json` are used to calculate CSS for each district.
 5. CSS values are classified into three alert levels:
    - 🟢 **Low (0–3):** No advisory needed
    - 🟡 **Moderate (3–6):** Watch advisory issued
