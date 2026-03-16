@@ -1,7 +1,9 @@
 # PROPOSAL.md
 
 **Group Name:** SpatioFarm
-**Members:** Swati A Patil, K. Yaswanthi , Sathvik , Himanshu 
+
+**Members:** Swathi A Patil, K. Yaswanthi , Sathvik , Himanshu
+
 **Project Working Title:** FasalAlert: Real-Time Crop Stress & Weather Risk Advisory Dashboard
 
 ---
