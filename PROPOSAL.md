@@ -11,36 +11,29 @@
 ## 1. Problem Statement
 
 ### What is the "Spatial Problem"?
-Indian agriculture is acutely vulnerable to weather extremes — unseasonal rainfall,
-drought, heatwaves, and cold waves — yet most farmers and district-level agricultural
-officers have no single tool that combines live weather intelligence with spatial
-crop calendars to flag stress zones in real time.
+Unseasonal rainfall, among other meteorological extremes, pose a serious threat to Indian agriculture.
+Despite heat waves, cold waves, and droughts, the majority of farmers and district-level agricultural
+Officers lack a single instrument that integrates geographical and real-time weather intelligence crop calendars to instantly identify areas of concern.
 
-Existing solutions are either too technical (raw IMD data portals) or too generic
-(national weather apps with no crop context). There is a clear gap for a
-**spatially-aware, crop-calendar-driven advisory dashboard** that:
+Current options are either too generic (national weather apps without agricultural context) or too technical (raw IMD data portals). There is a definite need for a **A crop calendar-driven advice dashboard with spatial awareness** that:
 
-- Fetches **live weather data** (temperature, humidity, rainfall, wind) for any
-  Indian district using its geographic coordinates via the OpenWeatherMap API.
-- Overlays fetched conditions against **crop-specific stress thresholds**
-  (e.g., wheat is heat-stressed above 35°C during grain-filling; rice is
-  flood-stressed when rainfall exceeds 150mm/week).
-- Computes a **Crop Stress Score (CSS)** for each queried district combining
-  temperature anomaly, humidity, and rainfall deviation.
-- Renders all district-level results on an **interactive pan-India choropleth map**
-  built with GeoPandas and Folium, colour-coded by stress severity.
-- Allows bulk querying of **multiple districts simultaneously** so agricultural
-  officers can monitor an entire state at once.
+- The OpenWeatherMap API is used to retrieve **live weather data** (temperature, humidity, rainfall, wind) for every Indian
+  district based on its geographic coordinates.
+- Overlays fetched conditions against **crop-specific stress thresholds** (for example, rice is flood-stressed when rainfall
+  exceeds 150 mm/week, and wheat is heat-stressed above 35°C during grain-filling).
+- Combines temperature anomaly, humidity, and rainfall deviation to calculate a **Crop Stress Score (CSS)** for each
+  district that is searched.
+- Using GeoPandas and Folium, an interactive pan-India choropleth map is created, color-coding all district-level results
+  according to the degree of stress.Agricultural officials can monitor an entire state at once by enabling bulk querying of
+  **multiple districts simultaneously**.
 
 ### Target User
-- **District Agricultural Officers (DAOs)** monitoring seasonal crop conditions
-  across multiple blocks.
-- **State agriculture departments** needing a quick spatial overview of weather
-  stress before issuing advisories.
-- **Agritech researchers and students** requiring a lightweight crop-weather
-  correlation tool.
-- **Farmers' cooperatives and FPOs** wanting real-time risk flags for
-  procurement and insurance decisions.
+- **District Agricultural Officers (DAOs)** : They are responsible for keeping an eye on various blocks' seasonal
+  agricultural conditions.
+- **State agriculture authorities**: Before issuing advisories, they require a quick spatial picture of meteorological
+  stress.
+- **Agritech researchers and students**: A lightweight crop-weather correlation tool is needed for them. 
+- **Farmers' cooperatives and FPOs**:They are interested in real-time risk indicators for insurance and procurement choices.
 
 Although the architecture supports pan-India districts, 
 the prototype will be demonstrated using selected agricultural regions for efficient analysis.
@@ -50,19 +43,17 @@ the prototype will be demonstrated using selected agricultural regions for effic
 ## 2. Technical Stack & Libraries
 
 ### GUI Framework
-- **Streamlit** — chosen for its zero-boilerplate web UI, built-in sidebar
-  widgets, interactive map embedding via `st.components.v1.html()`, and
-  `st.map()` / Folium integration. Ideal for a beginner team producing a
-  polished, demo-ready dashboard within the project timeline.
+- **Streamlit**: It was selected due to its zero-boilerplate online user interface, integrated sidebar widgets, interactive
+  map embedding using `st.components.v1.html()`, and integration with Folium and `st.map()`. Perfect for a novice team that
+  wants to finish the project on schedule and produce a clean, demo-ready dashboard.
+
 
 ### Core Geospatial Logic
-- **GeoPandas** — for loading the pan-India district boundary GeoJSON/Shapefile,
-  computing district centroids (used as API query coordinates), performing
-  spatial joins, and building the Folium choropleth layer.
-- **Folium** — for rendering an interactive Leaflet.js choropleth map of
-  district-level Crop Stress Scores embedded inside Streamlit.
-- **Shapely** (bundled with GeoPandas) — for point-in-polygon checks and
-  centroid extraction.
+- **GeoPandas**: It is used to load the GeoJSON/Shapefile of the pan-India district boundaries, calculate district centroids
+  (which are used as coordinates for API queries), execute spatial joins, and construct the Folium choropleth layer.
+- **Folium** : An interactive Leaflet.js choropleth map showing district-level Crop Stress Scores embedded within Streamlit
+  can be rendered.
+- **Shapely** : It is included in GeoPandas package, for centroid extraction and point-in-polygon verification.
 
 ### The "Advanced" Component
 
