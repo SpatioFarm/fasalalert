@@ -58,20 +58,18 @@ the prototype will be demonstrated using selected agricultural regions for effic
 ### The "Advanced" Component
 
 **Web & API Track (Primary):**
-- **Requests** library to call the **OpenWeatherMap Current Weather API**
-  (free tier, 60 calls/min) using district centroid latitude/longitude.
-- Fetched fields: `temp`, `humidity`, `rainfall (1h)`, `wind_speed`, `weather_id`.
-- **IMD Open Data (static CSV)** — historical normal rainfall and temperature
-  normals per district used as baseline for anomaly calculation.
-- Stress thresholds are defined per crop per growth stage in a
-  `crop_thresholds.json` config file, making the logic data-driven and
-  easily extensible.
+- **Requests**: Library to use district centroid latitude and longitude to use the **OpenWeatherMap Current Weather API*
+  (free tier, 60 calls/min).
+- The following fields were retrieved: `temp`, `humidity`, `rainfall (1h)`, `wind_speed`, and `weather_id`.
+- **IMD Open Data (static CSV)**: The baseline for calculating anomalies is the historical normal rainfall and temperature
+  normals for each district we can get it here.
+- The logic is data-driven and readily expandable since stress levels are specified for each crop and growth stage in a
+  crop_thresholds.json` configuration file.
+
 
 **Spatial Modeling Component (Secondary):**
-- **GeoPandas spatial joins** — joining fetched weather point data back to
-  district polygons for choropleth rendering.
-- **Pandas** — for tabular aggregation, anomaly computation
-  (observed − normal), and CSS formula application.
+- **GeoPandas spatial joins**: Joining retrieved weather point data back to district polygons for choropleth display 
+- **Pandas**: For tabular aggregation, anomaly computation (observed − normal), and CSS formula application.
 
 ### Crop Stress Score (CSS) Formula
 ```
@@ -86,34 +84,28 @@ Where:
 ```
 
 ### Data Sources
-1. **OpenWeatherMap Current Weather API** — free-tier key, queried by
-   district centroid coordinates.
+1. **OpenWeatherMap Current Weather API** — district centroid coordinates are used to query this free-tier key.
    URL: `https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}`
-2. **India District Boundaries GeoJSON** — GADM India Level-2 or
-   Datameet India Maps (open license).
+2. **India District Boundaries GeoJSON** — Datameet India Maps (open license) or GADM India Level-2.
    Source: `https://github.com/datameet/maps`
-3. **IMD District-Level Climate Normals (CSV)** — historical average
-   temperature and rainfall per district per month, sourced from IMD's
-   open data portal or pre-compiled from published IMD reports.
+3. **IMD District-Level Climate Normals (CSV)** — historical average monthly rainfall and temperature by district, either
+   pre-compiled from published IMD reports or obtained from IMD's open data portal.
    Source: `https://imdpune.gov.in`
-4. **Crop Calendar Reference (JSON)** — manually compiled from ICAR's
-   published crop-wise sowing/harvesting calendar for Indian states,
-   stored as `data/crop_calendar.json`.
+5. **Crop Calendar Reference (JSON)** — saved as `data/crop_calendar.json`; manually assembled from ICAR's published crop
+   wise sowing/harvesting calendar for Indian states.
 
 ---
 
 ## 3. Proposed GUI Architecture
 
 ### Input Section (Streamlit Sidebar)
-- **State Selector:** `st.selectbox` — filters the district list by state.
-- **District Multi-Selector:** `st.multiselect` — allows selecting 1–20
-  districts for simultaneous querying (bulk mode).
-- **Crop Selector:** `st.selectbox` — choose the active crop
-  (Wheat / Rice / Maize / Cotton / Soybean / Sugarcane).
-- **Growth Stage Selector:** `st.radio` — select current growth stage
-  (Sowing / Vegetative / Flowering / Grain-filling / Harvest) to apply
-  the correct stress thresholds from `crop_thresholds.json`.
-- **"Fetch & Analyse" Button:** Triggers the full API + computation pipeline.
+- **State Selector:** The district list is filtered by state using the **State Selector** `st.selectbox`.
+- **District Multi-Selector:** One to twenty districts can be chosen for simultaneous querying (bulk mode) using the
+  `st.multiselect`.
+- **Crop Selector:** Select the active crop (Wheat, Rice, Maize, Cotton, Soybean, Sugarcane) using the `st.selectbox`.
+- **Growth Stage Selector:** To apply the appropriate stress thresholds from `crop_thresholds.json`, choose the current
+  growth stage (Sowing, Vegetative, Flowering, Grain-filling, or Harvest) using the `st.radio`.
+- **"Fetch & Analyse" Button:** button initiates the entire API and computing process.
 
 ### Processing Section
 When **"Fetch & Analyse"** is clicked:
