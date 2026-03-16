@@ -42,6 +42,9 @@ Existing solutions are either too technical (raw IMD data portals) or too generi
 - **Farmers' cooperatives and FPOs** wanting real-time risk flags for
   procurement and insurance decisions.
 
+Although the architecture supports pan-India districts, 
+the prototype will be demonstrated using selected agricultural regions for efficient analysis.
+
 ---
 
 ## 2. Technical Stack & Libraries
