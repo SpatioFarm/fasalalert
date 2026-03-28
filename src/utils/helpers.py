@@ -1,70 +1,70 @@
-# helpers.py
-# Member 4 support file
-# This file contains helper functions used across the whole project:
-# 1. Anomaly calculator (observed - historical normal)
-# 2. Advisory text generator
-# 3. CSV export function
-
 import pandas as pd
 
-# ─────────────────────────────────────────
-# FUNCTION 1 — Calculate weather anomalies
-# ─────────────────────────────────────────
-def calculate_anomaly(observed_temp, normal_temp,
-                      observed_rain, normal_rain,
-                      observed_humidity, normal_humidity):
-    # Anomaly = observed value minus historical normal value
-    delta_temp = observed_temp - normal_temp
-    delta_rain = observed_rain - normal_rain
-    delta_humidity = observed_humidity - normal_humidity
-
-    return delta_temp, delta_rain, delta_humidity
+# -----------------------------
+# ANOMALY CALCULATION
+# -----------------------------
+def calculate_anomaly(current, normal):
+    return current - normal
 
 
-# ─────────────────────────────────────────
-# FUNCTION 2 — Generate advisory text
-# ─────────────────────────────────────────
-def generate_advisory(css_score, crop, delta_temp,
-                      delta_rain, delta_humidity):
-    # Low stress — no action needed
-    if css_score <= 3:
-        advisory = "No immediate action needed. Conditions are normal."
+# -----------------------------
+# FULL ANOMALY FUNCTION
+# -----------------------------
+def get_anomalies(temp, rain, humidity, normal_temp, normal_rain, normal_humidity):
+    
+    delta_temp = calculate_anomaly(temp, normal_temp)
+    delta_rain = calculate_anomaly(rain, normal_rain)
+    delta_humidity = calculate_anomaly(humidity, normal_humidity)
 
-    # Moderate stress — watch advisory
-    elif css_score <= 6:
-        advisory = "Watch advisory issued. Monitor conditions closely."
+    return {
+        "delta_temp": delta_temp,
+        "delta_rain": delta_rain,
+        "delta_humidity": delta_humidity
+    }
 
-        # Add specific reason based on which anomaly is highest
-        if abs(delta_temp) >= abs(delta_rain) and abs(delta_temp) >= abs(delta_humidity):
-            advisory += f" Temperature deviation detected for {crop}."
-        elif abs(delta_rain) >= abs(delta_humidity):
-            advisory += f" Rainfall deviation detected for {crop}."
-        else:
-            advisory += f" Humidity deviation detected for {crop}."
 
-    # High stress — immediate action
+# -----------------------------
+# ADVISORY GENERATOR
+# -----------------------------
+def generate_advisory(css, crop):
+
+    if css < 3:
+        return f"{crop}: No stress. Conditions are normal."
+
+    elif css < 6:
+        return f"{crop}: Moderate stress. Monitor field conditions."
+
     else:
-        if delta_temp > 0:
-            advisory = f"URGENT: Heat stress detected for {crop}. Irrigate within 48 hours."
-        elif delta_rain > 0:
-            advisory = f"URGENT: Excess rainfall detected for {crop}. Check drainage immediately."
-        elif delta_humidity > 0:
-            advisory = f"URGENT: High humidity for {crop}. Apply fungicide to prevent disease."
-        else:
-            advisory = f"URGENT: Severe stress detected for {crop}. Contact local agriculture officer."
-
-    return advisory
+        return f"{crop}: High stress! Take immediate action (irrigation/spray)."
 
 
-# ─────────────────────────────────────────
-# FUNCTION 3 — Export results to CSV
-# ─────────────────────────────────────────
-def export_to_csv(results_list):
-    # results_list is a list of dictionaries
-    # Each dictionary has one district's full results
-    results_df = pd.DataFrame(results_list)
+# -----------------------------
+# CSV EXPORT
+# -----------------------------
+def export_to_csv(data, filename="output.csv"):
+    df = pd.DataFrame(data)
+    df.to_csv(filename, index=False)
+    print(f"Data exported to {filename}")
 
-    # Convert DataFrame to CSV string for Streamlit download
-    csv_string = results_df.to_csv(index=False)
+if __name__ == "__main__":
 
-    return csv_string
+    # Sample values
+    temp = 36
+    rain = 70
+    humidity = 80
+
+    normal_temp = 30
+    normal_rain = 50
+    normal_humidity = 70
+
+    anomalies = get_anomalies(temp, rain, humidity, normal_temp, normal_rain, normal_humidity)
+
+    print("Anomalies:", anomalies)
+
+    # Test advisory
+    css = 7.5
+    print(generate_advisory(css, "wheat"))
+
+    # Test CSV
+    data = [anomalies]
+    export_to_csv(data)
