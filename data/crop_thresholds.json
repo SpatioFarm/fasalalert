@@ -1,0 +1,199 @@
+{
+  "wheat": {
+    "sowing": {
+      "temp_threshold": 28,
+      "rain_threshold": 40,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 30,
+      "rain_threshold": 60,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 32,
+      "rain_threshold": 70,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+    },
+    "grain_filling": {
+      "temp_threshold": 35,
+      "rain_threshold": 80,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.6, "rain": 0.2, "humidity": 0.2 }
+    },
+    "harvest": {
+      "temp_threshold": 38,
+      "rain_threshold": 50,
+      "humidity_threshold": 70,
+      "weights": { "temp": 0.3, "rain": 0.5, "humidity": 0.2 }
+    }
+  },
+
+  "rice": {
+    "sowing": {
+      "temp_threshold": 35,
+      "rain_threshold": 100,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 37,
+      "rain_threshold": 120,
+      "humidity_threshold": 90,
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 35,
+      "rain_threshold": 150,
+      "humidity_threshold": 90,
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+    },
+    "grain_filling": {
+      "temp_threshold": 36,
+      "rain_threshold": 150,
+      "humidity_threshold": 88,
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+    },
+    "harvest": {
+      "temp_threshold": 38,
+      "rain_threshold": 80,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.2, "rain": 0.6, "humidity": 0.2 }
+    }
+  },
+
+  "maize": {
+    "sowing": {
+      "temp_threshold": 32,
+      "rain_threshold": 60,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 34,
+      "rain_threshold": 80,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 33,
+      "rain_threshold": 90,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+    },
+    "grain_filling": {
+      "temp_threshold": 35,
+      "rain_threshold": 100,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+    },
+    "harvest": {
+      "temp_threshold": 36,
+      "rain_threshold": 60,
+      "humidity_threshold": 70,
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+    }
+  },
+
+  "cotton": {
+    "sowing": {
+      "temp_threshold": 38,
+      "rain_threshold": 60,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 40,
+      "rain_threshold": 80,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 38,
+      "rain_threshold": 90,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+    },
+    "grain_filling": {
+      "temp_threshold": 40,
+      "rain_threshold": 100,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "harvest": {
+      "temp_threshold": 36,
+      "rain_threshold": 50,
+      "humidity_threshold": 70,
+      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 }
+    }
+  },
+
+  "soybean": {
+    "sowing": {
+      "temp_threshold": 32,
+      "rain_threshold": 60,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 34,
+      "rain_threshold": 80,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 33,
+      "rain_threshold": 90,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+    },
+    "grain_filling": {
+      "temp_threshold": 34,
+      "rain_threshold": 100,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+    },
+    "harvest": {
+      "temp_threshold": 35,
+      "rain_threshold": 50,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+    }
+  },
+
+  "sugarcane": {
+    "sowing": {
+      "temp_threshold": 35,
+      "rain_threshold": 80,
+      "humidity_threshold": 80,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "vegetative": {
+      "temp_threshold": 38,
+      "rain_threshold": 120,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+    },
+    "flowering": {
+      "temp_threshold": 36,
+      "rain_threshold": 100,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "grain_filling": {
+      "temp_threshold": 37,
+      "rain_threshold": 120,
+      "humidity_threshold": 85,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+    },
+    "harvest": {
+      "temp_threshold": 35,
+      "rain_threshold": 60,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 }
+    }
+  }
+}
