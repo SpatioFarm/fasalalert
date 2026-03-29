@@ -33,3 +33,15 @@ FasalAlert aims to bridge this gap by:
 The system considers India's administrative boundaries at the district level (GADM Level-2). It uses GeoPandas to extract centroids as coordinates for API queries and links findings back to district polygons for choropleth visualization.
 
 The prototype covers pan-India regions but focuses initially on key agricultural zones like Punjab's Wheat Belt (Ludhiana, Amritsar, Patiala, Sangrur, Moga) to test functionality under real-world conditions.
+
+## Section 2: Technical Stack & Libraries
+Owner: Swathi | Target: ~400 words
+
+## Section 3: CSS Formula & Methodology
+Owner: Swathi | Target: ~400 words
+
+## Section 4: GUI Architecture
+Owner: Sathvik | Target: ~400 words
+
+## Section 5: Results & Limitations
+Owner: Yaswanthi + Sathvik | Target: ~500 words
