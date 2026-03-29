@@ -1,11 +1,12 @@
 import streamlit as st
 import pandas as pd
+from src.logic.spatial import load_districts, build_choropleth_map
 
 st.set_page_config(page_title="FasalAlert", layout="wide")
 st.title("🌾 FasalAlert — Crop Stress & Weather Advisory")
 
 # ============================================================
-# DUMMY DATA (will be replaced by real API data later)
+# DUMMY DATA (will be replaced later)
 # ============================================================
 dummy_data = pd.DataFrame({
     "District": ["Ludhiana", "Amritsar", "Karnal", "Hisar", "Jaipur"],
@@ -28,7 +29,7 @@ dummy_data = pd.DataFrame({
 })
 
 # ============================================================
-# TASK 1 — SIDEBAR
+# SIDEBAR
 # ============================================================
 with st.sidebar:
     st.header("🔍 Select Parameters")
@@ -57,15 +58,18 @@ with st.sidebar:
     fetch = st.button("🚀 Fetch & Analyse")
 
 # ============================================================
-# TASK 2 — SUMMARY METRIC CARDS
+# MAIN LOGIC
 # ============================================================
 if fetch:
-    # Filter dummy data to selected districts
+
+    # Filter data
     filtered = dummy_data[dummy_data["District"].isin(selected_districts)]
 
     if filtered.empty:
-        st.warning("No data found for selected districts. Please select at least one district.")
+        st.warning("No data found. Select districts.")
+
     else:
+        # ================= SUMMARY =================
         st.subheader("📊 Summary")
 
         avg_css = round(filtered["CSS"].mean(), 2)
@@ -74,22 +78,20 @@ if fetch:
         most_stressed = filtered.loc[filtered["CSS"].idxmax(), "District"]
 
         col1, col2, col3, col4 = st.columns(4)
-        col1.metric("🌡️ Avg Stress Score (CSS)", avg_css)
-        col2.metric("🔥 Hottest District", hottest)
-        col3.metric("🌧️ Wettest District", wettest)
+        col1.metric("🌡️ Avg Stress Score", avg_css)
+        col2.metric("🔥 Hottest", hottest)
+        col3.metric("🌧️ Wettest", wettest)
         col4.metric("⚠️ Most Stressed", most_stressed)
 
         st.divider()
 
-        # ============================================================
-        # TASK 3 — DISTRICT DETAIL TABLE + CSV DOWNLOAD
-        # ============================================================
+        # ================= TABLE =================
         st.subheader("📋 District Details")
         st.dataframe(filtered, use_container_width=True)
 
         csv = filtered.to_csv(index=False).encode("utf-8")
         st.download_button(
-            label="⬇️ Download Results as CSV",
+            label="⬇️ Download CSV",
             data=csv,
             file_name="fasalalert_results.csv",
             mime="text/csv"
@@ -97,22 +99,44 @@ if fetch:
 
         st.divider()
 
-        # ============================================================
-        # TASK 4 — ADVISORY PANELS FOR HIGH STRESS DISTRICTS
-        # ============================================================
+        # ================= ADVISORY =================
         high_stress = filtered[filtered["CSS"] >= 6]
 
         if not high_stress.empty:
             st.subheader("🚨 High Stress Advisories")
             for _, row in high_stress.iterrows():
                 st.error(
-                    f"**{row['District']}, {row['State']}** | "
-                    f"Crop: {row['Crop']} | "
-                    f"CSS: {row['CSS']} | "
-                    f"⚠️ {row['Advisory']}"
+                    f"{row['District']}, {row['State']} | "
+                    f"CSS: {row['CSS']} | {row['Advisory']}"
                 )
         else:
-            st.success("✅ No high-stress districts in your selection.")
+            st.success("✅ No high stress districts")
+
+        st.divider()
+
+        # ================= MAP =================
+        st.subheader("🗺️ Crop Stress Map")
+
+        gdf = load_districts("data/india_districts.geojson")
+
+        map_data = filtered.copy()
+        map_data.rename(columns={
+            "District": "district",
+            "State": "state",
+            "CSS": "css_score",
+            "Advisory": "advisory"
+        }, inplace=True)
+
+        merged = gdf.merge(
+            map_data,
+            left_on=["NAME_2", "NAME_1"],
+            right_on=["district", "state"],
+            how="inner"
+        )
+
+        map_obj = build_choropleth_map(merged)
+
+        st.components.v1.html(map_obj._repr_html_(), height=600)
 
 else:
-    st.info("👈 Select your parameters in the sidebar and click **Fetch & Analyse** to begin.")
+    st.info("👈 Select parameters and click Fetch & Analyse")
