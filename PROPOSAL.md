@@ -162,10 +162,10 @@ fasalalert/
 
 | Member Name | Primary Responsibility | Secondary Responsibility |
 |-------------|------------------------|--------------------------|
-| **Himanshu** | `src/logic/stress.py` — CSS formula, crop threshold JSON loader, stress classification logic | `data/` — Compile `crop_thresholds.json` and `crop_calendar.json` from ICAR sources |
+| **Swathi A Patil** | `src/logic/stress.py` — CSS formula, crop threshold JSON loader, stress classification logic | `data/` — Compile `crop_thresholds.json` and `crop_calendar.json` from ICAR sources |
 | **Sathvik** | `src/gui/app.py` — Streamlit sidebar widgets, metric cards, dataframe display, advisory panels, download button | UI/UX testing across districts and crops; writeup Section 3 (GUI description) |
-| **Swathi A Patil** | `src/utils/weather_api.py` — OpenWeatherMap API integration, batch querying, rate-limit handling, response parsing | `data/imd_district_normals.csv` — data collection and cleaning |
-| **K. Yaswanthi** | `src/logic/spatial.py` — GeoPandas district GeoJSON loading, centroid extraction, Folium choropleth builder | Git lead: repo setup, `README.md`, `requirements.txt`, `main.py`, final module integration |
+| **K. Yaswanthi** | `src/utils/weather_api.py` — OpenWeatherMap API integration, batch querying, rate-limit handling, response parsing | `data/imd_district_normals.csv` — data collection and cleaning |
+| **Himanshu** | `src/logic/spatial.py` — GeoPandas district GeoJSON loading, centroid extraction, Folium choropleth builder | Git lead: repo setup, `README.md`, `requirements.txt`, `main.py`, final module integration |
 
 ---
 *Proposal submitted by: SpatioFarm | Date: March 16, 2026*

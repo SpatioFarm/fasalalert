@@ -1,0 +1,51 @@
+{
+  "wheat": {
+    "uttarakhand": {
+      "sowing": "November",
+      "harvest": "April"
+    },
+    "punjab": {
+      "sowing": "October",
+      "harvest": "April"
+    }
+  },
+
+  "rice": {
+    "uttarakhand": {
+      "sowing": "June",
+      "harvest": "October"
+    },
+    "west_bengal": {
+      "sowing": "May",
+      "harvest": "November"
+    }
+  },
+
+  "maize": {
+    "uttarakhand": {
+      "sowing": "June",
+      "harvest": "September"
+    }
+  },
+
+  "cotton": {
+    "maharashtra": {
+      "sowing": "June",
+      "harvest": "November"
+    }
+  },
+
+  "soybean": {
+    "madhya_pradesh": {
+      "sowing": "June",
+      "harvest": "October"
+    }
+  },
+
+  "sugarcane": {
+    "uttar_pradesh": {
+      "sowing": "February",
+      "harvest": "December"
+    }
+  }
+}
