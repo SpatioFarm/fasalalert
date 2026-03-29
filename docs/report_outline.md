@@ -142,3 +142,6 @@ displays the district name, state, crop, CSS score, and a specific
 recommended farmer action such as "Irrigate within 48 hours" or 
 "Apply fungicide — high humidity risk." This ensures critical alerts 
 are immediately visible without requiring the user to scan the full table.
+
+## Section 5: Results
+Owner: K. Yaswanthi and Sathvik | Target: ~400 words
