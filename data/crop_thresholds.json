@@ -1,34 +1,48 @@
 {
+  "_source_notes": {
+    "wheat": "ICAR-IIWBR Karnal Advisory Bulletins 2021-23; CIMMYT Heat Stress in Wheat (Sharma et al. 2019)",
+    "rice": "ICAR-NRRI Cuttack Tech Bulletin 2022; IRRI Rice Knowledge Bank",
+    "maize": "ICAR-IIMR Ludhiana Kharif Advisory 2022",
+    "cotton": "ICAR-CICR Nagpur Technical Bulletin No. 44",
+    "soybean": "ICAR-IISR Indore Kharif Management Guide 2022",
+    "sugarcane": "ICAR-IISR Lucknow Sugarcane Cultivation Manual 2021"
+  },
+
   "wheat": {
     "sowing": {
-      "temp_threshold": 28,
-      "rain_threshold": 40,
-      "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "temp_threshold": 25,
+      "rain_threshold": 35,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Optimal sowing 20-22C; stress begins above 25C. ICAR-IIWBR."
     },
     "vegetative": {
-      "temp_threshold": 30,
-      "rain_threshold": 60,
+      "temp_threshold": 28,
+      "rain_threshold": 55,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Tillering and leaf area development sensitive above 28C."
     },
     "flowering": {
-      "temp_threshold": 32,
-      "rain_threshold": 70,
+      "temp_threshold": 30,
+      "rain_threshold": 65,
       "humidity_threshold": 75,
-      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 },
+      "_note": "Anthesis failure above 30C confirmed by CIMMYT heat stress studies."
     },
     "grain_filling": {
       "temp_threshold": 35,
       "rain_threshold": 80,
       "humidity_threshold": 75,
-      "weights": { "temp": 0.6, "rain": 0.2, "humidity": 0.2 }
+      "weights": { "temp": 0.6, "rain": 0.2, "humidity": 0.2 },
+      "_note": "35C is the confirmed threshold for starch accumulation failure. ICAR-IIWBR 2022."
     },
     "harvest": {
       "temp_threshold": 38,
       "rain_threshold": 50,
       "humidity_threshold": 70,
-      "weights": { "temp": 0.3, "rain": 0.5, "humidity": 0.2 }
+      "weights": { "temp": 0.3, "rain": 0.5, "humidity": 0.2 },
+      "_note": "Excess rain at harvest causes lodging and quality loss. Weight on rain highest."
     }
   },
 
@@ -37,163 +51,188 @@
       "temp_threshold": 35,
       "rain_threshold": 100,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Nursery and transplanting stage. ICAR-NRRI."
     },
     "vegetative": {
       "temp_threshold": 37,
       "rain_threshold": 120,
       "humidity_threshold": 90,
-      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 },
+      "_note": "Tiller production dependent on water; rain weight raised to 0.4."
     },
     "flowering": {
       "temp_threshold": 35,
       "rain_threshold": 150,
       "humidity_threshold": 90,
-      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 },
+      "_note": "35C reduces spikelet fertility. IRRI confirmed critical threshold."
     },
     "grain_filling": {
       "temp_threshold": 36,
       "rain_threshold": 150,
       "humidity_threshold": 88,
-      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 },
+      "_note": "Chalkiness increases above 36C. IRRI Rice Knowledge Bank."
     },
     "harvest": {
       "temp_threshold": 38,
       "rain_threshold": 80,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.2, "rain": 0.6, "humidity": 0.2 }
+      "weights": { "temp": 0.2, "rain": 0.6, "humidity": 0.2 },
+      "_note": "Rain at harvest causes shattering and germination. Rain weight 0.6."
     }
   },
 
   "maize": {
     "sowing": {
-      "temp_threshold": 32,
-      "rain_threshold": 60,
-      "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "temp_threshold": 30,
+      "rain_threshold": 50,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Germination inhibited above 30C soil temp. ICAR-IIMR."
     },
     "vegetative": {
       "temp_threshold": 34,
-      "rain_threshold": 80,
+      "rain_threshold": 75,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Leaf area index sensitive to drought above 34C."
     },
     "flowering": {
-      "temp_threshold": 33,
-      "rain_threshold": 90,
-      "humidity_threshold": 75,
-      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+      "temp_threshold": 32,
+      "rain_threshold": 85,
+      "humidity_threshold": 70,
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 },
+      "_note": "Silk and pollen viability fails above 32-35C. Critical stage. ICAR-IIMR Ludhiana."
     },
     "grain_filling": {
       "temp_threshold": 35,
       "rain_threshold": 100,
       "humidity_threshold": 75,
-      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 }
+      "weights": { "temp": 0.5, "rain": 0.3, "humidity": 0.2 },
+      "_note": "Kernel abortion above 35C. Starch deposition affected."
     },
     "harvest": {
       "temp_threshold": 36,
       "rain_threshold": 60,
       "humidity_threshold": 70,
-      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 },
+      "_note": "Ear rot risk increases with excess humidity. Rain and humidity weighted higher."
     }
   },
 
   "cotton": {
     "sowing": {
-      "temp_threshold": 38,
-      "rain_threshold": 60,
-      "humidity_threshold": 75,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "temp_threshold": 36,
+      "rain_threshold": 55,
+      "humidity_threshold": 70,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Germination optimal 25-30C. Stress above 36C. ICAR-CICR Nagpur."
     },
     "vegetative": {
       "temp_threshold": 40,
       "rain_threshold": 80,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Cotton tolerates high temp during vegetative; threshold raised to 40C."
     },
     "flowering": {
       "temp_threshold": 38,
       "rain_threshold": 90,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 },
+      "_note": "Boll shedding begins above 38C. ICAR-CICR Technical Bulletin No. 44."
     },
     "grain_filling": {
       "temp_threshold": 40,
       "rain_threshold": 100,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Boll development stage. Cotton relatively heat-tolerant; threshold 40C."
     },
     "harvest": {
       "temp_threshold": 36,
       "rain_threshold": 50,
       "humidity_threshold": 70,
-      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 }
+      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 },
+      "_note": "Excess rain at opening causes fibre quality loss. Rain weight highest."
     }
   },
 
   "soybean": {
     "sowing": {
-      "temp_threshold": 32,
-      "rain_threshold": 60,
-      "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "temp_threshold": 30,
+      "rain_threshold": 55,
+      "humidity_threshold": 75,
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Germination optimal 25-30C. ICAR-IISR Indore."
     },
     "vegetative": {
       "temp_threshold": 34,
       "rain_threshold": 80,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Leaf area sensitive to drought and heat above 34C."
     },
     "flowering": {
       "temp_threshold": 33,
       "rain_threshold": 90,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 },
+      "_note": "Flower abortion above 33C well-documented. ICAR-IISR kharif management guide."
     },
     "grain_filling": {
       "temp_threshold": 34,
       "rain_threshold": 100,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 }
+      "weights": { "temp": 0.5, "rain": 0.2, "humidity": 0.3 },
+      "_note": "Pod fill rate decreases above 34C. Seed protein quality affected."
     },
     "harvest": {
       "temp_threshold": 35,
       "rain_threshold": 50,
       "humidity_threshold": 75,
-      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 },
+      "_note": "Pod shattering in dry heat above 35C. Rain causes mould risk."
     }
   },
 
   "sugarcane": {
     "sowing": {
       "temp_threshold": 35,
-      "rain_threshold": 80,
+      "rain_threshold": 75,
       "humidity_threshold": 80,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Bud sprouting inhibited above 35C. ICAR-IISR Lucknow."
     },
     "vegetative": {
       "temp_threshold": 38,
       "rain_threshold": 120,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 }
+      "weights": { "temp": 0.3, "rain": 0.4, "humidity": 0.3 },
+      "_note": "Grand growth phase is water-intensive; rain weight raised to 0.4."
     },
     "flowering": {
       "temp_threshold": 36,
       "rain_threshold": 100,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Flowering (arrowing) affected by temperature extremes."
     },
     "grain_filling": {
       "temp_threshold": 37,
       "rain_threshold": 120,
       "humidity_threshold": 85,
-      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 }
+      "weights": { "temp": 0.4, "rain": 0.3, "humidity": 0.3 },
+      "_note": "Sucrose accumulation phase. Excess rain dilutes juice quality."
     },
     "harvest": {
-      "temp_threshold": 35,
+      "temp_threshold": 32,
       "rain_threshold": 60,
       "humidity_threshold": 75,
-      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 }
+      "weights": { "temp": 0.2, "rain": 0.5, "humidity": 0.3 },
+      "_note": "Ratoon crop establishment. Rain at harvest reduces sucrose content. ICAR-IISR."
     }
   }
 }
