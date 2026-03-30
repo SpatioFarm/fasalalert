@@ -4,29 +4,35 @@ from src.utils.helpers import get_anomalies, generate_advisory
 # Load thresholds
 thresholds = load_thresholds()
 
-# Sample weather data
-temp = 36
-rain = 70
-humidity = 80
+# Sample observed weather
+temp, rain, humidity = 36, 70, 80
 
-# Normal values
-normal_temp = 30
-normal_rain = 50
-normal_humidity = 70
+# Historical normal values for this district/month
+normal_temp, normal_rain, normal_humidity = 28, 50, 65
 
-# Step 1: Anomaly
+# Step 1: Calculate anomalies (delta = observed - normal)
 anomalies = get_anomalies(temp, rain, humidity, normal_temp, normal_rain, normal_humidity)
 
-# Step 2: CSS
-css = calculate_css(temp, rain, humidity, "wheat", "grain_filling", thresholds)
+# Step 2: CSS uses anomalies, not raw values
+css = calculate_css(
+    anomalies["delta_temp"],
+    anomalies["delta_rain"],
+    anomalies["delta_humidity"],
+    "wheat", "grain_filling", thresholds
+)
 
 # Step 3: Classification
 category = classify_css(css)
 
-# Step 4: Advisory
-advisory = generate_advisory(css, "wheat")
+# Step 4: Advisory with reason
+advisory = generate_advisory(css, "wheat",
+                              delta_temp=anomalies["delta_temp"],
+                              delta_rain=anomalies["delta_rain"],
+                              delta_humidity=anomalies["delta_humidity"])
 
-print("Anomalies:", anomalies)
-print("CSS:", css)
-print("Category:", category)
-print("Advisory:", advisory)
+print("=" * 50)
+print("Anomalies :", anomalies)
+print("CSS       :", css, "(range: 0-10)")
+print("Category  :", category)
+print("Advisory  :", advisory)
+print("=" * 50)
