@@ -1,51 +1,513 @@
 {
-  "wheat": {
-    "uttarakhand": {
-      "sowing": "November",
-      "harvest": "April"
-    },
-    "punjab": {
-      "sowing": "October",
-      "harvest": "April"
+  "kadapa": {
+    "state": "Andhra Pradesh",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "December" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
     }
   },
 
-  "rice": {
-    "uttarakhand": {
-      "sowing": "June",
-      "harvest": "October"
-    },
-    "west_bengal": {
-      "sowing": "May",
-      "harvest": "November"
+  "visakhapatnam": {
+    "state": "Andhra Pradesh",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "December" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
     }
   },
 
-  "maize": {
-    "uttarakhand": {
-      "sowing": "June",
-      "harvest": "September"
+  "vijayawada": {
+    "state": "Andhra Pradesh",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "December" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
     }
   },
 
-  "cotton": {
-    "maharashtra": {
-      "sowing": "June",
-      "harvest": "November"
+  "hyderabad": {
+    "state": "Telangana",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "December" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November – December" }
     }
   },
 
-  "soybean": {
-    "madhya_pradesh": {
-      "sowing": "June",
-      "harvest": "October"
+  "warangal": {
+    "state": "Telangana",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "December" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November – December" }
     }
   },
 
-  "sugarcane": {
-    "uttar_pradesh": {
-      "sowing": "February",
-      "harvest": "December"
+  "delhi": {
+    "state": "Delhi (NCT)",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "mumbai": {
+    "state": "Maharashtra",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February – March", "harvest": "January – February" }
+    }
+  },
+
+  "pune": {
+    "state": "Maharashtra",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February – March", "harvest": "January – February" }
+    }
+  },
+
+  "nagpur": {
+    "state": "Maharashtra",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February – March", "harvest": "January – February" }
+    }
+  },
+
+  "jaipur": {
+    "state": "Rajasthan",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "July", "harvest": "October" },
+      "cotton": { "sowing": "May", "harvest": "November" },
+      "soybean": { "sowing": "July", "harvest": "October" }
+    }
+  },
+
+  "udaipur": {
+    "state": "Rajasthan",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "July", "harvest": "October" },
+      "cotton": { "sowing": "May", "harvest": "November" },
+      "soybean": { "sowing": "July", "harvest": "October" }
+    }
+  },
+
+  "lucknow": {
+    "state": "Uttar Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
+    }
+  },
+
+  "kanpur": {
+    "state": "Uttar Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
+    }
+  },
+
+  "varanasi": {
+    "state": "Uttar Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "December" }
+    }
+  },
+
+  "patna": {
+    "state": "Bihar",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "gaya": {
+    "state": "Bihar",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "kolkata": {
+    "state": "West Bengal",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "May – June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "siliguri": {
+    "state": "West Bengal",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "May – June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "chennai": {
+    "state": "Tamil Nadu",
+    "crops": {
+      "rice": { "sowing": "June & October", "harvest": "October & January" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "sugarcane": { "sowing": "January", "harvest": "November – December" }
+    }
+  },
+
+  "coimbatore": {
+    "state": "Tamil Nadu",
+    "crops": {
+      "rice": { "sowing": "June & October", "harvest": "October & January" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "sugarcane": { "sowing": "January", "harvest": "November – December" }
+    }
+  },
+
+  "madurai": {
+    "state": "Tamil Nadu",
+    "crops": {
+      "rice": { "sowing": "June & October", "harvest": "October & January" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "sugarcane": { "sowing": "January", "harvest": "November – December" }
+    }
+  },
+
+  "bengaluru": {
+    "state": "Karnataka",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "January – February", "harvest": "December – January" }
+    }
+  },
+
+  "mysuru": {
+    "state": "Karnataka",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "January – February", "harvest": "December – January" }
+    }
+  },
+
+  "mangaluru": {
+    "state": "Karnataka",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "January – February", "harvest": "December – January" }
+    }
+  },
+
+  "kochi": {
+    "state": "Kerala",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "September – October" }
+    }
+  },
+
+  "thiruvananthapuram": {
+    "state": "Kerala",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "September – October" }
+    }
+  },
+
+  "kozhikode": {
+    "state": "Kerala",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "September – October" }
+    }
+  },
+
+  "ahmedabad": {
+    "state": "Gujarat",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "surat": {
+    "state": "Gujarat",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "vadodara": {
+    "state": "Gujarat",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "bhopal": {
+    "state": "Madhya Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "indore": {
+    "state": "Madhya Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "jabalpur": {
+    "state": "Madhya Pradesh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" },
+      "soybean": { "sowing": "June", "harvest": "October" },
+      "sugarcane": { "sowing": "February", "harvest": "November" }
+    }
+  },
+
+  "raipur": {
+    "state": "Chhattisgarh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "soybean": { "sowing": "June", "harvest": "October" }
+    }
+  },
+
+  "bilaspur": {
+    "state": "Chhattisgarh",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "soybean": { "sowing": "June", "harvest": "October" }
+    }
+  },
+
+  "ranchi": {
+    "state": "Jharkhand",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "jamshedpur": {
+    "state": "Jharkhand",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "March – April" },
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "bhubaneswar": {
+    "state": "Odisha",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" }
+    }
+  },
+
+  "cuttack": {
+    "state": "Odisha",
+    "crops": {
+      "rice": { "sowing": "June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "June", "harvest": "November" }
+    }
+  },
+
+  "amritsar": {
+    "state": "Punjab",
+    "crops": {
+      "wheat": { "sowing": "October – November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "April – May", "harvest": "October – November" },
+      "sugarcane": { "sowing": "February – March", "harvest": "November" }
+    }
+  },
+
+  "ludhiana": {
+    "state": "Punjab",
+    "crops": {
+      "wheat": { "sowing": "October – November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "cotton": { "sowing": "April – May", "harvest": "October – November" },
+      "sugarcane": { "sowing": "February – March", "harvest": "November" }
+    }
+  },
+
+  "chandigarh": {
+    "state": "Chandigarh (UT)",
+    "crops": {
+      "wheat": { "sowing": "October – November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "sugarcane": { "sowing": "February – March", "harvest": "November" }
+    }
+  },
+
+  "shimla": {
+    "state": "Himachal Pradesh",
+    "crops": {
+      "wheat": { "sowing": "October – November", "harvest": "May – June" },
+      "maize": { "sowing": "April – May", "harvest": "September" },
+      "rice": { "sowing": "June", "harvest": "October" }
+    }
+  },
+
+  "dehradun": {
+    "state": "Uttarakhand",
+    "crops": {
+      "wheat": { "sowing": "November", "harvest": "April" },
+      "rice": { "sowing": "June", "harvest": "October" },
+      "maize": { "sowing": "June", "harvest": "September" },
+      "sugarcane": { "sowing": "February – March", "harvest": "November" }
+    }
+  },
+
+  "srinagar": {
+    "state": "Jammu & Kashmir",
+    "crops": {
+      "wheat": { "sowing": "October – November", "harvest": "May – June" },
+      "maize": { "sowing": "April – May", "harvest": "September" },
+      "rice": { "sowing": "June", "harvest": "October" }
+    }
+  },
+
+  "leh": {
+    "state": "Ladakh (UT)",
+    "crops": {
+      "wheat": { "sowing": "April – May", "harvest": "September" }
+    }
+  },
+
+  "agartala": {
+    "state": "Tripura",
+    "crops": {
+      "rice": { "sowing": "May – June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "aizawl": {
+    "state": "Mizoram",
+    "crops": {
+      "rice": { "sowing": "May – June", "harvest": "November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "imphal": {
+    "state": "Manipur",
+    "crops": {
+      "rice": { "sowing": "May – June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "shillong": {
+    "state": "Meghalaya",
+    "crops": {
+      "rice": { "sowing": "May – June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" }
+    }
+  },
+
+  "kohima": {
+    "state": "Nagaland",
+    "crops": {
+      "rice": { "sowing": "May – June", "harvest": "October – November" },
+      "maize": { "sowing": "June", "harvest": "September" }
     }
   }
 }
