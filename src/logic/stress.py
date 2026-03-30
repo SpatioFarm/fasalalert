@@ -10,32 +10,29 @@ def load_thresholds(path="data/crop_thresholds.json"):
 
 # -----------------------------
 # CALCULATE CSS
+# FIX: Takes delta (anomaly) values, NOT raw values
+# Formula: CSS = w1*(ΔTemp/thr_T) + w2*(ΔRain/thr_R) + w3*(ΔHum/thr_H)  scaled to 0-10
 # -----------------------------
-def calculate_css(temp, rain, humidity, crop, stage, thresholds):
-    
+def calculate_css(delta_temp, delta_rain, delta_humidity, crop, stage, thresholds):
+
     crop_data = thresholds[crop][stage]
 
-    temp_threshold = crop_data["temp_threshold"]
-    rain_threshold = crop_data["rain_threshold"]
+    temp_threshold   = crop_data["temp_threshold"]
+    rain_threshold   = crop_data["rain_threshold"]
     humidity_threshold = crop_data["humidity_threshold"]
+    weights          = crop_data["weights"]
 
-    weights = crop_data["weights"]
+    # Normalized anomaly scores
+    temp_score     = delta_temp     / temp_threshold
+    rain_score     = delta_rain     / rain_threshold
+    humidity_score = delta_humidity / humidity_threshold
 
-    # Normalized scores
-    temp_score = temp / temp_threshold
-    rain_score = rain / rain_threshold
-    humidity_score = humidity / humidity_threshold
+    # Weighted sum then scale to 0-10 and clamp
+    css = (weights["temp"] * temp_score +
+           weights["rain"] * rain_score +
+           weights["humidity"] * humidity_score) * 10
 
-    # CSS formula
-    css = (
-        weights["temp"] * temp_score +
-        weights["rain"] * rain_score +
-        weights["humidity"] * humidity_score
-    )
-
-    # Scale to 0–10
-    css = css * 10
-
+    css = max(0.0, min(10.0, css))   # clamp to valid range
     return round(css, 2)
 
 
@@ -52,28 +49,23 @@ def classify_css(css):
 
 
 # -----------------------------
-# TEST RUN (VERY IMPORTANT)
+# TEST RUN
 # -----------------------------
 if __name__ == "__main__":
 
     thresholds = load_thresholds()
 
-    # Dummy values (you can change these)
-    temp = 36
-    rain = 70
-    humidity = 80
+    temp, rain, humidity             = 36, 70, 80
+    normal_temp, normal_rain, normal_humidity = 28, 50, 65
 
-    crop = "wheat"
-    stage = "grain_filling"
+    delta_temp     = temp - normal_temp
+    delta_rain     = rain - normal_rain
+    delta_humidity = humidity - normal_humidity
 
-    css = calculate_css(temp, rain, humidity, crop, stage, thresholds)
+    crop, stage = "wheat", "grain_filling"
 
+    css = calculate_css(delta_temp, delta_rain, delta_humidity, crop, stage, thresholds)
     category = classify_css(css)
 
-    print("Temperature:", temp)
-    print("Rainfall:", rain)
-    print("Humidity:", humidity)
-    print("Crop:", crop)
-    print("Stage:", stage)
-    print("CSS:", css)
-    print("Stress Level:", category)
+    print("Anomaly   | ΔTemp:", delta_temp, " ΔRain:", delta_rain, " ΔHumidity:", delta_humidity)
+    print("CSS:", css, "| Stress Level:", category)
