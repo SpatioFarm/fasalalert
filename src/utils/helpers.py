@@ -5,7 +5,7 @@ Utility functions for FasalAlert pipeline.
 
 Functions
 ---------
-get_anomalies()       — Compute delta (observed − normal) for temp, rain, humidity
+get_anomalies()   — Compute delta (observed − normal) for temp, rain, humidity
 generate_advisory()   — Human-readable advisory string with dominant stress driver
 export_csv()          — Export list of district result dicts to a CSV file
 rate_limit_handler()  — Throttled wrapper for bulk OpenWeatherMap API calls
@@ -22,8 +22,14 @@ CSS Scale (from stress.py)
 
 import csv
 import time
-import requests
 from datetime import datetime
+
+# Safe import for requests
+try:
+    import requests
+except ImportError:
+    requests = None
+    print("⚠️ 'requests' module not found. Run: pip install requests")
 
 
 # ─────────────────────────────────────────────
@@ -369,6 +375,14 @@ def rate_limit_handler(districts, api_key, delay_seconds=1.1):
 # QUICK SELF-TEST
 # ─────────────────────────────────────────────
 if __name__ == "__main__":
+    import sys
+    import os
+    
+    # Dynamically add the project root (fasalalert) to Python's path
+    # This file is in fasalalert/src/utils/helpers.py, so we go up two levels
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
 
     print("\n" + "=" * 55)
     print("helpers.py — self-test")
