@@ -2,263 +2,184 @@ import streamlit as st
 import pandas as pd
 import sys
 import os
-import datetime
+from datetime import datetime
 
-# Add project root to path so we can import our modules
+# Add project root to path
 sys.path.append(os.path.abspath("."))
 
-# Member 3 (You) - Weather API
+# Internal Module Imports
 from src.utils.weather_api import get_weather_batch
+from src.logic.spatial import (
+    load_districts,
+    get_centroid,
+    join_weather_to_districts,
+    build_choropleth_map
+)
+from src.logic.stress import load_thresholds, calculate_css, classify_css
+from src.utils.helpers import get_anomalies, generate_advisory
 
-# Member 4 - Spatial/Map Logic
-from src.logic.spatial import load_districts, build_choropleth_map
-
-# Member 1 - Stress Logic
-from src.logic.stress import load_thresholds, calculate_css
-from src.utils.helpers import generate_advisory, get_anomalies
-
+# ---------------------------
+# PAGE SETUP
+# ---------------------------
 st.set_page_config(page_title="FasalAlert", layout="wide")
 st.title("🌾 FasalAlert — Crop Stress & Weather Advisory")
 
-# ============================================================
-# DATA LOADING
-# ============================================================
+# ---------------------------
+# LOAD DATA
+# ---------------------------
+@st.cache_data
+def load_geo():
+    # Member 4's GeoJSON
+    return load_districts("data/india_districts.geojson")
 
 @st.cache_data
-def load_district_data():
-    # Full list of 68 districts across 14 states as prepared by Member 3
-    data = [
-        # Andhra Pradesh
-        {"district": "Kadapa", "lat": 14.47, "lon": 78.82, "state": "Andhra Pradesh"},
-        {"district": "Visakhapatnam", "lat": 17.68, "lon": 83.21, "state": "Andhra Pradesh"},
-        {"district": "Vijayawada", "lat": 16.51, "lon": 80.64, "state": "Andhra Pradesh"},
-        {"district": "Nellore", "lat": 14.43, "lon": 79.98, "state": "Andhra Pradesh"},
-        {"district": "Kurnool", "lat": 15.83, "lon": 78.04, "state": "Andhra Pradesh"},
-        {"district": "Guntur", "lat": 16.30, "lon": 80.43, "state": "Andhra Pradesh"},
-        {"district": "Tirupati", "lat": 13.63, "lon": 79.41, "state": "Andhra Pradesh"},
-        {"district": "Anantapur", "lat": 14.68, "lon": 77.60, "state": "Andhra Pradesh"},
-        # Telangana
-        {"district": "Hyderabad", "lat": 17.38, "lon": 78.49, "state": "Telangana"},
-        {"district": "Warangal", "lat": 17.97, "lon": 79.59, "state": "Telangana"},
-        {"district": "Nizamabad", "lat": 18.67, "lon": 78.09, "state": "Telangana"},
-        {"district": "Karimnagar", "lat": 18.43, "lon": 79.13, "state": "Telangana"},
-        {"district": "Khammam", "lat": 17.25, "lon": 80.15, "state": "Telangana"},
-        # Punjab
-        {"district": "Ludhiana", "lat": 30.90, "lon": 75.85, "state": "Punjab"},
-        {"district": "Amritsar", "lat": 31.63, "lon": 74.87, "state": "Punjab"},
-        {"district": "Patiala", "lat": 30.33, "lon": 76.40, "state": "Punjab"},
-        {"district": "Jalandhar", "lat": 31.33, "lon": 75.57, "state": "Punjab"},
-        {"district": "Bathinda", "lat": 30.21, "lon": 74.94, "state": "Punjab"},
-        # Haryana
-        {"district": "Karnal", "lat": 29.68, "lon": 76.99, "state": "Haryana"},
-        {"district": "Hisar", "lat": 29.15, "lon": 75.72, "state": "Haryana"},
-        {"district": "Rohtak", "lat": 28.89, "lon": 76.60, "state": "Haryana"},
-        {"district": "Panipat", "lat": 29.39, "lon": 76.97, "state": "Haryana"},
-        {"district": "Ambala", "lat": 30.37, "lon": 76.78, "state": "Haryana"},
-        # Rajasthan
-        {"district": "Jaipur", "lat": 26.91, "lon": 75.79, "state": "Rajasthan"},
-        {"district": "Jodhpur", "lat": 26.29, "lon": 73.02, "state": "Rajasthan"},
-        {"district": "Kota", "lat": 25.18, "lon": 75.83, "state": "Rajasthan"},
-        {"district": "Bikaner", "lat": 28.02, "lon": 73.31, "state": "Rajasthan"},
-        {"district": "Ajmer", "lat": 26.45, "lon": 74.64, "state": "Rajasthan"},
-        # Uttar Pradesh
-        {"district": "Agra", "lat": 27.18, "lon": 78.01, "state": "Uttar Pradesh"},
-        {"district": "Varanasi", "lat": 25.32, "lon": 83.01, "state": "Uttar Pradesh"},
-        {"district": "Lucknow", "lat": 26.85, "lon": 80.95, "state": "Uttar Pradesh"},
-        {"district": "Kanpur", "lat": 26.46, "lon": 80.33, "state": "Uttar Pradesh"},
-        {"district": "Allahabad", "lat": 25.44, "lon": 81.84, "state": "Uttar Pradesh"},
-        {"district": "Meerut", "lat": 28.98, "lon": 77.70, "state": "Uttar Pradesh"},
-        # Maharashtra
-        {"district": "Nagpur", "lat": 21.15, "lon": 79.09, "state": "Maharashtra"},
-        {"district": "Pune", "lat": 18.52, "lon": 73.86, "state": "Maharashtra"},
-        {"district": "Nashik", "lat": 19.99, "lon": 73.79, "state": "Maharashtra"},
-        {"district": "Aurangabad", "lat": 19.88, "lon": 75.32, "state": "Maharashtra"},
-        {"district": "Solapur", "lat": 17.68, "lon": 75.90, "state": "Maharashtra"},
-        {"district": "Kolhapur", "lat": 16.70, "lon": 74.24, "state": "Maharashtra"},
-        # Madhya Pradesh
-        {"district": "Bhopal", "lat": 23.25, "lon": 77.40, "state": "Madhya Pradesh"},
-        {"district": "Indore", "lat": 22.72, "lon": 75.86, "state": "Madhya Pradesh"},
-        {"district": "Gwalior", "lat": 26.22, "lon": 78.18, "state": "Madhya Pradesh"},
-        {"district": "Jabalpur", "lat": 23.18, "lon": 79.99, "state": "Madhya Pradesh"},
-        {"district": "Ujjain", "lat": 23.18, "lon": 75.78, "state": "Madhya Pradesh"},
-        # Karnataka
-        {"district": "Bengaluru", "lat": 12.97, "lon": 77.59, "state": "Karnataka"},
-        {"district": "Mysuru", "lat": 12.29, "lon": 76.63, "state": "Karnataka"},
-        {"district": "Hubli", "lat": 15.36, "lon": 75.12, "state": "Karnataka"},
-        {"district": "Mangaluru", "lat": 12.91, "lon": 74.85, "state": "Karnataka"},
-        {"district": "Belagavi", "lat": 15.85, "lon": 74.50, "state": "Karnataka"},
-        # Tamil Nadu
-        {"district": "Chennai", "lat": 13.08, "lon": 80.27, "state": "Tamil Nadu"},
-        {"district": "Coimbatore", "lat": 11.01, "lon": 76.97, "state": "Tamil Nadu"},
-        {"district": "Madurai", "lat": 9.92, "lon": 78.12, "state": "Tamil Nadu"},
-        {"district": "Salem", "lat": 11.65, "lon": 78.16, "state": "Tamil Nadu"},
-        {"district": "Tiruchirappalli", "lat": 10.79, "lon": 78.70, "state": "Tamil Nadu"},
-        # Gujarat
-        {"district": "Ahmedabad", "lat": 23.02, "lon": 72.57, "state": "Gujarat"},
-        {"district": "Surat", "lat": 21.17, "lon": 72.83, "state": "Gujarat"},
-        {"district": "Vadodara", "lat": 22.30, "lon": 73.19, "state": "Gujarat"},
-        {"district": "Rajkot", "lat": 22.30, "lon": 70.80, "state": "Gujarat"},
-        # West Bengal
-        {"district": "Kolkata", "lat": 22.57, "lon": 88.36, "state": "West Bengal"},
-        {"district": "Asansol", "lat": 23.68, "lon": 86.98, "state": "West Bengal"},
-        {"district": "Siliguri", "lat": 26.72, "lon": 88.43, "state": "West Bengal"},
-        # Bihar
-        {"district": "Patna", "lat": 25.59, "lon": 85.13, "state": "Bihar"},
-        {"district": "Gaya", "lat": 24.79, "lon": 85.00, "state": "Bihar"},
-        {"district": "Muzaffarpur", "lat": 26.12, "lon": 85.39, "state": "Bihar"},
-        # Odisha
-        {"district": "Bhubaneswar", "lat": 20.29, "lon": 85.82, "state": "Odisha"},
-        {"district": "Cuttack", "lat": 20.46, "lon": 85.88, "state": "Odisha"},
-        {"district": "Sambalpur", "lat": 21.46, "lon": 83.97, "state": "Odisha"},
-    ]
-    return pd.DataFrame(data)
+def load_normals():
+    # IMD Normals provided by you
+    df = pd.read_csv("data/imd_district_normals.csv")
+    df.columns = df.columns.str.lower().str.strip()
+    return df
 
-district_df = load_district_data()
-normals_df = pd.read_csv("data/imd_district_normals.csv")
+gdf = load_geo()
+normals_df = load_normals()
 thresholds = load_thresholds()
 
-# ============================================================
-# SIDEBAR
-# ============================================================
+states = sorted(gdf["NAME_1"].unique())
 
-with st.sidebar:
-    st.header("🔍 Select Parameters")
-    
-    # State selection
-    all_states = ["-- Select State --"] + sorted(district_df["state"].unique().tolist())
-    selected_state = st.selectbox("State", all_states)
+# ---------------------------
+# SIDEBAR INPUT
+# ---------------------------
+st.sidebar.header("User Inputs")
 
-    # Filter districts based on state
-    if selected_state == "-- Select State --":
-        available_districts = sorted(district_df["district"].tolist())
-    else:
-        available_districts = sorted(
-            district_df[district_df["state"] == selected_state]["district"].tolist()
-        )
+selected_state = st.sidebar.selectbox("Select State", states)
 
-    selected_districts = st.multiselect(
-        "Districts (select up to 20)",
-        available_districts,
-        default=available_districts[:3] if len(available_districts) >= 3 else available_districts
-    )
+districts_in_state = sorted(
+    gdf[gdf["NAME_1"] == selected_state]["NAME_2"].unique()
+)
 
-    selected_crop = st.selectbox(
-        "Crop",
-        ["Wheat", "Rice", "Maize", "Cotton", "Soybean", "Sugarcane"]
-    )
+selected_districts = st.sidebar.multiselect(
+    "Select Districts",
+    districts_in_state,
+    default=districts_in_state[:3] if len(districts_in_state) >= 3 else districts_in_state
+)
 
-    selected_stage = st.radio(
-        "Growth Stage",
-        ["Sowing", "Vegetative", "Flowering", "Grain-filling", "Harvest"]
-    )
+crop = st.sidebar.selectbox(
+    "Select Crop",
+    ["wheat", "rice", "maize", "cotton", "soybean", "sugarcane"]
+)
 
-    fetch = st.button("🚀 Fetch & Analyse")
+stage = st.sidebar.radio(
+    "Growth Stage",
+    ["sowing", "vegetative", "flowering", "grain_filling", "harvest"]
+)
 
-# ============================================================
-# MAIN LOGIC
-# ============================================================
+fetch = st.sidebar.button("🚀 Fetch & Analyse")
 
+# ---------------------------
+# MAIN PIPELINE
+# ---------------------------
 if fetch:
     if not selected_districts:
         st.warning("Please select at least one district.")
-    else:
-        with st.spinner("Fetching live weather and calculating stress..."):
-            # 1. Fetch live weather using Member 3's API module
-            selected_rows = district_df[district_df["district"].isin(selected_districts)].copy()
-            weather_results = get_weather_batch(selected_rows)
+        st.stop()
 
-            # 2. Integrate with Member 1's logic
-            current_month = datetime.datetime.now().month
-            
-            final_data = []
-            for _, row in weather_results.iterrows():
-                d_name = row['district']
-                d_state = district_df[district_df['district'] == d_name]['state'].values[0]
-                
-                # Get normal values for anomalies
-                try:
-                    norm = normals_df[(normals_df['district'] == d_name) & 
-                                      (normals_df['month'] == current_month)].iloc[0]
-                    norm_t, norm_r, norm_h = norm['normal_temp_c'], norm['normal_rainfall_mm'], norm['normal_humidity_pct']
-                except:
-                    # Fallback if normal data is missing
-                    norm_t, norm_r, norm_h = 30, 50, 70
+    month = datetime.now().month
 
-                # Calculate real CSS (Member 1)
-                css_score = calculate_css(
-                    row['temperature'], row['rainfall'], row['humidity'],
-                    selected_crop.lower().replace("-", "_"), 
-                    selected_stage.lower().replace("-", "_"), 
-                    thresholds
-                )
+    # STEP 1 — GET COORDINATES (Advanced Spatial Logic)
+    district_coords = []
+    for d in selected_districts:
+        lat, lon = get_centroid(d, selected_state, gdf)
+        if lat is not None:
+            district_coords.append({"district": d, "lat": lat, "lon": lon})
 
-                # Generate Advisory (Member 1)
-                advisory_text = generate_advisory(css_score, selected_crop)
+    district_df = pd.DataFrame(district_coords)
 
-                final_data.append({
-                    "District": d_name,
-                    "State": d_state,
-                    "Temp (°C)": row['temperature'],
-                    "Humidity (%)": row['humidity'],
-                    "Rainfall (mm)": row['rainfall'],
-                    "CSS": css_score,
-                    "Advisory": advisory_text
-                })
+    # STEP 2 — WEATHER API (Your Member 3 Code)
+    with st.spinner("Fetching live weather..."):
+        weather_df = get_weather_batch(district_df)
 
-            df_final = pd.DataFrame(final_data)
+    if weather_df.empty:
+        st.error("No weather data received. Check your API key or internet.")
+        st.stop()
 
-        # ===== DISPLAY SUMMARY =====
-        st.subheader("📊 Summary")
-        col1, col2, col3, col4 = st.columns(4)
-        col1.metric("🌡️ Avg Stress", round(df_final["CSS"].mean(), 2))
-        col2.metric("🔥 Hottest", df_final.loc[df_final["Temp (°C)"].idxmax(), "District"])
-        col3.metric("🌧️ Wettest", df_final.loc[df_final["Rainfall (mm)"].idxmax(), "District"])
-        col4.metric("⚠️ Most Stressed", df_final.loc[df_final["CSS"].idxmax(), "District"])
+    # STEP 3 — PROCESS EACH DISTRICT
+    results = []
+    for _, row in weather_df.iterrows():
+        district = row["district"]
 
-        st.divider()
+        # GET NORMAL VALUES
+        normal_row = normals_df[
+            (normals_df["district"].str.lower() == district.lower()) &
+            (normals_df["month"] == month)
+        ]
 
-        # ===== TABLE + CSV =====
-        st.subheader("📋 District Details")
-        st.dataframe(df_final, use_container_width=True)
+        # Use defaults if IMD data is missing for a specific district
+        if not normal_row.empty:
+            n_temp = float(normal_row["normal_temp_c"].values[0])
+            n_rain = float(normal_row["normal_rainfall_mm"].values[0])
+            n_hum  = float(normal_row["normal_humidity_pct"].values[0])
+        else:
+            n_temp, n_rain, n_hum = 30.0, 50.0, 70.0
+
+        # FIX: Calculate CSS using ACTUAL values (not deltas/differences)
+        # This ensures the score is not 0
+        css_score = calculate_css(
+            row["temperature"],
+            row["rainfall"],
+            row["humidity"],
+            crop,
+            stage,
+            thresholds
+        )
+
+        # Still calculate anomalies for the report/advisory
+        anomalies = get_anomalies(
+            row["temperature"], row["rainfall"], row["humidity"],
+            n_temp, n_rain, n_hum
+        )
+
+        category = classify_css(css_score)
         
-        csv_data = df_final.to_csv(index=False).encode('utf-8')
-        st.download_button("⬇️ Download Results as CSV", csv_data, "fasalalert_report.csv", "text/csv")
+        # Detailed advisory
+        advisory = generate_advisory(css_score, crop.capitalize())
 
-        st.divider()
+        results.append({
+            "district": district,
+            "state": selected_state,
+            "temperature": row["temperature"],
+            "rainfall": row["rainfall"],
+            "humidity": row["humidity"],
+            "normal_temp": n_temp,
+            "css_score": css_score,
+            "category": category,
+            "advisory": advisory
+        })
 
-        # ===== HIGH STRESS ALERTS =====
-        high_stress = df_final[df_final["CSS"] >= 7]
-        if not high_stress.empty:
-            st.subheader("🚨 High Stress Advisories")
-            for _, row in high_stress.iterrows():
-                st.error(f"**{row['District']}**: {row['Advisory']}")
+    results_df = pd.DataFrame(results)
 
-        st.divider()
+    # ---------------------------
+    # DISPLAY OUTPUTS
+    # ---------------------------
+    st.subheader("📊 Summary")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Avg Stress Score", round(results_df["css_score"].mean(), 2))
+    c2.metric("Max Temp", f"{results_df['temperature'].max()}°C")
+    c3.metric("Most Stressed", results_df.sort_values("css_score", ascending=False)["district"].iloc[0])
 
-        # ===== MAP (Member 4 Integration) =====
-        st.subheader("🗺️ Crop Stress Map")
-        try:
-            gdf = load_districts("data/india_districts.geojson")
-            
-            # Prepare data for mapping
-            map_ready_df = df_final.copy()
-            map_ready_df.rename(columns={
-                "District": "district",
-                "State": "state",
-                "CSS": "css_score"
-            }, inplace=True)
+    st.subheader("📋 Detailed Analysis")
+    st.dataframe(results_df, use_container_width=True)
 
-            merged = gdf.merge(
-                map_ready_df,
-                left_on=["NAME_2", "NAME_1"],
-                right_on=["district", "state"],
-                how="inner"
-            )
+    # MAP (Member 4 Integration)
+    st.subheader("🗺️ Stress Map")
+    merged = join_weather_to_districts(gdf, results_df)
+    if not merged.empty:
+        map_obj = build_choropleth_map(merged)
+        st.components.v1.html(map_obj._repr_html_(), height=600)
+    else:
+        st.error("Map could not sync with district names.")
 
-            map_obj = build_choropleth_map(merged)
-            st.components.v1.html(map_obj._repr_html_(), height=600)
-        except Exception as e:
-            st.warning(f"Map failed to load: {e}")
+    # DOWNLOAD
+    csv = results_df.to_csv(index=False).encode('utf-8')
+    st.download_button("⬇️ Download CSV Report", csv, "fasalalert_report.csv", "text/csv")
 
 else:
-    st.info("👈 Select a state and districts, then click 'Fetch & Analyse' to start.")
+    st.info("👈 Select your parameters and click 'Fetch & Analyse' to start.")
