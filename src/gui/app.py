@@ -199,7 +199,9 @@ if fetch:
 
     map_input = results_df.rename(columns={
         "District": "district",
-        "State":    "state"
+        "State":    "state",
+        "CSS":      "css_score",
+        "Advisory": "advisory"
     })
     merged = join_weather_to_districts(gdf, map_input)
 
