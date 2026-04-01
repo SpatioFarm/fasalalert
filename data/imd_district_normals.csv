@@ -23,18 +23,18 @@ Nicobar Islands,Andaman and Nicobar Islands,9,27,280,86
 Nicobar Islands,Andaman and Nicobar Islands,10,27,250,85
 Nicobar Islands,Andaman and Nicobar Islands,11,26,180,82
 Nicobar Islands,Andaman and Nicobar Islands,12,25,60,80
-Adilabad,Andhra Pradesh,1,24,5,65
-Adilabad,Andhra Pradesh,2,26,5,60
-Adilabad,Andhra Pradesh,3,29,8,58
-Adilabad,Andhra Pradesh,4,32,15,55
-Adilabad,Andhra Pradesh,5,35,30,55
-Adilabad,Andhra Pradesh,6,32,80,70
-Adilabad,Andhra Pradesh,7,29,120,80
-Adilabad,Andhra Pradesh,8,28,110,82
-Adilabad,Andhra Pradesh,9,28,150,80
-Adilabad,Andhra Pradesh,10,27,100,75
-Adilabad,Andhra Pradesh,11,24,40,68
-Adilabad,Andhra Pradesh,12,22,10,65
+Adilabad,Telangana,1,24,5,65
+Adilabad,Telangana,2,26,5,60
+Adilabad,Telangana,3,29,8,58
+Adilabad,Telangana,4,32,15,55
+Adilabad,Telangana,5,35,30,55
+Adilabad,Telangana,6,32,80,70
+Adilabad,Telangana,7,29,120,80
+Adilabad,Telangana,8,28,110,82
+Adilabad,Telangana,9,28,150,80
+Adilabad,Telangana,10,27,100,75
+Adilabad,Telangana,11,24,40,68
+Adilabad,Telangana,12,22,10,65
 Anantapur,Andhra Pradesh,1,24,5,65
 Anantapur,Andhra Pradesh,2,26,5,60
 Anantapur,Andhra Pradesh,3,29,8,58
@@ -95,42 +95,42 @@ Guntur,Andhra Pradesh,9,28,150,80
 Guntur,Andhra Pradesh,10,27,100,75
 Guntur,Andhra Pradesh,11,24,40,68
 Guntur,Andhra Pradesh,12,22,10,65
-Hyderabad,Andhra Pradesh,1,24,5,65
-Hyderabad,Andhra Pradesh,2,26,5,60
-Hyderabad,Andhra Pradesh,3,29,8,58
-Hyderabad,Andhra Pradesh,4,32,15,55
-Hyderabad,Andhra Pradesh,5,35,30,55
-Hyderabad,Andhra Pradesh,6,32,80,70
-Hyderabad,Andhra Pradesh,7,29,120,80
-Hyderabad,Andhra Pradesh,8,28,110,82
-Hyderabad,Andhra Pradesh,9,28,150,80
-Hyderabad,Andhra Pradesh,10,27,100,75
-Hyderabad,Andhra Pradesh,11,24,40,68
-Hyderabad,Andhra Pradesh,12,22,10,65
-Karimnagar,Andhra Pradesh,1,24,5,65
-Karimnagar,Andhra Pradesh,2,26,5,60
-Karimnagar,Andhra Pradesh,3,29,8,58
-Karimnagar,Andhra Pradesh,4,32,15,55
-Karimnagar,Andhra Pradesh,5,35,30,55
-Karimnagar,Andhra Pradesh,6,32,80,70
-Karimnagar,Andhra Pradesh,7,29,120,80
-Karimnagar,Andhra Pradesh,8,28,110,82
-Karimnagar,Andhra Pradesh,9,28,150,80
-Karimnagar,Andhra Pradesh,10,27,100,75
-Karimnagar,Andhra Pradesh,11,24,40,68
-Karimnagar,Andhra Pradesh,12,22,10,65
-Khammam,Andhra Pradesh,1,24,5,65
-Khammam,Andhra Pradesh,2,26,5,60
-Khammam,Andhra Pradesh,3,29,8,58
-Khammam,Andhra Pradesh,4,32,15,55
-Khammam,Andhra Pradesh,5,35,30,55
-Khammam,Andhra Pradesh,6,32,80,70
-Khammam,Andhra Pradesh,7,29,120,80
-Khammam,Andhra Pradesh,8,28,110,82
-Khammam,Andhra Pradesh,9,28,150,80
-Khammam,Andhra Pradesh,10,27,100,75
-Khammam,Andhra Pradesh,11,24,40,68
-Khammam,Andhra Pradesh,12,22,10,65
+Hyderabad,Telangana,1,24,5,65
+Hyderabad,Telangana,2,26,5,60
+Hyderabad,Telangana,3,29,8,58
+Hyderabad,Telangana,4,32,15,55
+Hyderabad,Telangana,5,35,30,55
+Hyderabad,Telangana,6,32,80,70
+Hyderabad,Telangana,7,29,120,80
+Hyderabad,Telangana,8,28,110,82
+Hyderabad,Telangana,9,28,150,80
+Hyderabad,Telangana,10,27,100,75
+Hyderabad,Telangana,11,24,40,68
+Hyderabad,Telangana,12,22,10,65
+Karimnagar,Telangana,1,24,5,65
+Karimnagar,Telangana,2,26,5,60
+Karimnagar,Telangana,3,29,8,58
+Karimnagar,Telangana,4,32,15,55
+Karimnagar,Telangana,5,35,30,55
+Karimnagar,Telangana,6,32,80,70
+Karimnagar,Telangana,7,29,120,80
+Karimnagar,Telangana,8,28,110,82
+Karimnagar,Telangana,9,28,150,80
+Karimnagar,Telangana,10,27,100,75
+Karimnagar,Telangana,11,24,40,68
+Karimnagar,Telangana,12,22,10,65
+Khammam,Telangana,1,24,5,65
+Khammam,Telangana,2,26,5,60
+Khammam,Telangana,3,29,8,58
+Khammam,Telangana,4,32,15,55
+Khammam,Telangana,5,35,30,55
+Khammam,Telangana,6,32,80,70
+Khammam,Telangana,7,29,120,80
+Khammam,Telangana,8,28,110,82
+Khammam,Telangana,9,28,150,80
+Khammam,Telangana,10,27,100,75
+Khammam,Telangana,11,24,40,68
+Khammam,Telangana,12,22,10,65
 Krishna,Andhra Pradesh,1,24,5,65
 Krishna,Andhra Pradesh,2,26,5,60
 Krishna,Andhra Pradesh,3,29,8,58
@@ -155,42 +155,42 @@ Kurnool,Andhra Pradesh,9,28,150,80
 Kurnool,Andhra Pradesh,10,27,100,75
 Kurnool,Andhra Pradesh,11,24,40,68
 Kurnool,Andhra Pradesh,12,22,10,65
-Mahbubnagar,Andhra Pradesh,1,24,5,65
-Mahbubnagar,Andhra Pradesh,2,26,5,60
-Mahbubnagar,Andhra Pradesh,3,29,8,58
-Mahbubnagar,Andhra Pradesh,4,32,15,55
-Mahbubnagar,Andhra Pradesh,5,35,30,55
-Mahbubnagar,Andhra Pradesh,6,32,80,70
-Mahbubnagar,Andhra Pradesh,7,29,120,80
-Mahbubnagar,Andhra Pradesh,8,28,110,82
-Mahbubnagar,Andhra Pradesh,9,28,150,80
-Mahbubnagar,Andhra Pradesh,10,27,100,75
-Mahbubnagar,Andhra Pradesh,11,24,40,68
-Mahbubnagar,Andhra Pradesh,12,22,10,65
-Medak,Andhra Pradesh,1,24,5,65
-Medak,Andhra Pradesh,2,26,5,60
-Medak,Andhra Pradesh,3,29,8,58
-Medak,Andhra Pradesh,4,32,15,55
-Medak,Andhra Pradesh,5,35,30,55
-Medak,Andhra Pradesh,6,32,80,70
-Medak,Andhra Pradesh,7,29,120,80
-Medak,Andhra Pradesh,8,28,110,82
-Medak,Andhra Pradesh,9,28,150,80
-Medak,Andhra Pradesh,10,27,100,75
-Medak,Andhra Pradesh,11,24,40,68
-Medak,Andhra Pradesh,12,22,10,65
-Nalgonda,Andhra Pradesh,1,24,5,65
-Nalgonda,Andhra Pradesh,2,26,5,60
-Nalgonda,Andhra Pradesh,3,29,8,58
-Nalgonda,Andhra Pradesh,4,32,15,55
-Nalgonda,Andhra Pradesh,5,35,30,55
-Nalgonda,Andhra Pradesh,6,32,80,70
-Nalgonda,Andhra Pradesh,7,29,120,80
-Nalgonda,Andhra Pradesh,8,28,110,82
-Nalgonda,Andhra Pradesh,9,28,150,80
-Nalgonda,Andhra Pradesh,10,27,100,75
-Nalgonda,Andhra Pradesh,11,24,40,68
-Nalgonda,Andhra Pradesh,12,22,10,65
+Mahbubnagar,Telangana,1,24,5,65
+Mahbubnagar,Telangana,2,26,5,60
+Mahbubnagar,Telangana,3,29,8,58
+Mahbubnagar,Telangana,4,32,15,55
+Mahbubnagar,Telangana,5,35,30,55
+Mahbubnagar,Telangana,6,32,80,70
+Mahbubnagar,Telangana,7,29,120,80
+Mahbubnagar,Telangana,8,28,110,82
+Mahbubnagar,Telangana,9,28,150,80
+Mahbubnagar,Telangana,10,27,100,75
+Mahbubnagar,Telangana,11,24,40,68
+Mahbubnagar,Telangana,12,22,10,65
+Medak,Telangana,1,24,5,65
+Medak,Telangana,2,26,5,60
+Medak,Telangana,3,29,8,58
+Medak,Telangana,4,32,15,55
+Medak,Telangana,5,35,30,55
+Medak,Telangana,6,32,80,70
+Medak,Telangana,7,29,120,80
+Medak,Telangana,8,28,110,82
+Medak,Telangana,9,28,150,80
+Medak,Telangana,10,27,100,75
+Medak,Telangana,11,24,40,68
+Medak,Telangana,12,22,10,65
+Nalgonda,Telangana,1,24,5,65
+Nalgonda,Telangana,2,26,5,60
+Nalgonda,Telangana,3,29,8,58
+Nalgonda,Telangana,4,32,15,55
+Nalgonda,Telangana,5,35,30,55
+Nalgonda,Telangana,6,32,80,70
+Nalgonda,Telangana,7,29,120,80
+Nalgonda,Telangana,8,28,110,82
+Nalgonda,Telangana,9,28,150,80
+Nalgonda,Telangana,10,27,100,75
+Nalgonda,Telangana,11,24,40,68
+Nalgonda,Telangana,12,22,10,65
 Nellore,Andhra Pradesh,1,24,5,65
 Nellore,Andhra Pradesh,2,26,5,60
 Nellore,Andhra Pradesh,3,29,8,58
@@ -203,18 +203,18 @@ Nellore,Andhra Pradesh,9,28,150,80
 Nellore,Andhra Pradesh,10,27,100,75
 Nellore,Andhra Pradesh,11,24,40,68
 Nellore,Andhra Pradesh,12,22,10,65
-Nizamabad,Andhra Pradesh,1,24,5,65
-Nizamabad,Andhra Pradesh,2,26,5,60
-Nizamabad,Andhra Pradesh,3,29,8,58
-Nizamabad,Andhra Pradesh,4,32,15,55
-Nizamabad,Andhra Pradesh,5,35,30,55
-Nizamabad,Andhra Pradesh,6,32,80,70
-Nizamabad,Andhra Pradesh,7,29,120,80
-Nizamabad,Andhra Pradesh,8,28,110,82
-Nizamabad,Andhra Pradesh,9,28,150,80
-Nizamabad,Andhra Pradesh,10,27,100,75
-Nizamabad,Andhra Pradesh,11,24,40,68
-Nizamabad,Andhra Pradesh,12,22,10,65
+Nizamabad,Telangana,1,24,5,65
+Nizamabad,Telangana,2,26,5,60
+Nizamabad,Telangana,3,29,8,58
+Nizamabad,Telangana,4,32,15,55
+Nizamabad,Telangana,5,35,30,55
+Nizamabad,Telangana,6,32,80,70
+Nizamabad,Telangana,7,29,120,80
+Nizamabad,Telangana,8,28,110,82
+Nizamabad,Telangana,9,28,150,80
+Nizamabad,Telangana,10,27,100,75
+Nizamabad,Telangana,11,24,40,68
+Nizamabad,Telangana,12,22,10,65
 Prakasam,Andhra Pradesh,1,24,5,65
 Prakasam,Andhra Pradesh,2,26,5,60
 Prakasam,Andhra Pradesh,3,29,8,58
@@ -227,18 +227,18 @@ Prakasam,Andhra Pradesh,9,28,150,80
 Prakasam,Andhra Pradesh,10,27,100,75
 Prakasam,Andhra Pradesh,11,24,40,68
 Prakasam,Andhra Pradesh,12,22,10,65
-Rangareddi,Andhra Pradesh,1,24,5,65
-Rangareddi,Andhra Pradesh,2,26,5,60
-Rangareddi,Andhra Pradesh,3,29,8,58
-Rangareddi,Andhra Pradesh,4,32,15,55
-Rangareddi,Andhra Pradesh,5,35,30,55
-Rangareddi,Andhra Pradesh,6,32,80,70
-Rangareddi,Andhra Pradesh,7,29,120,80
-Rangareddi,Andhra Pradesh,8,28,110,82
-Rangareddi,Andhra Pradesh,9,28,150,80
-Rangareddi,Andhra Pradesh,10,27,100,75
-Rangareddi,Andhra Pradesh,11,24,40,68
-Rangareddi,Andhra Pradesh,12,22,10,65
+Rangareddi,Telangana,1,24,5,65
+Rangareddi,Telangana,2,26,5,60
+Rangareddi,Telangana,3,29,8,58
+Rangareddi,Telangana,4,32,15,55
+Rangareddi,Telangana,5,35,30,55
+Rangareddi,Telangana,6,32,80,70
+Rangareddi,Telangana,7,29,120,80
+Rangareddi,Telangana,8,28,110,82
+Rangareddi,Telangana,9,28,150,80
+Rangareddi,Telangana,10,27,100,75
+Rangareddi,Telangana,11,24,40,68
+Rangareddi,Telangana,12,22,10,65
 Srikakulam,Andhra Pradesh,1,24,5,65
 Srikakulam,Andhra Pradesh,2,26,5,60
 Srikakulam,Andhra Pradesh,3,29,8,58
@@ -275,18 +275,18 @@ Vizianagaram,Andhra Pradesh,9,28,150,80
 Vizianagaram,Andhra Pradesh,10,27,100,75
 Vizianagaram,Andhra Pradesh,11,24,40,68
 Vizianagaram,Andhra Pradesh,12,22,10,65
-Warangal,Andhra Pradesh,1,24,5,65
-Warangal,Andhra Pradesh,2,26,5,60
-Warangal,Andhra Pradesh,3,29,8,58
-Warangal,Andhra Pradesh,4,32,15,55
-Warangal,Andhra Pradesh,5,35,30,55
-Warangal,Andhra Pradesh,6,32,80,70
-Warangal,Andhra Pradesh,7,29,120,80
-Warangal,Andhra Pradesh,8,28,110,82
-Warangal,Andhra Pradesh,9,28,150,80
-Warangal,Andhra Pradesh,10,27,100,75
-Warangal,Andhra Pradesh,11,24,40,68
-Warangal,Andhra Pradesh,12,22,10,65
+Warangal,Telangana,1,24,5,65
+Warangal,Telangana,2,26,5,60
+Warangal,Telangana,3,29,8,58
+Warangal,Telangana,4,32,15,55
+Warangal,Telangana,5,35,30,55
+Warangal,Telangana,6,32,80,70
+Warangal,Telangana,7,29,120,80
+Warangal,Telangana,8,28,110,82
+Warangal,Telangana,9,28,150,80
+Warangal,Telangana,10,27,100,75
+Warangal,Telangana,11,24,40,68
+Warangal,Telangana,12,22,10,65
 West Godavari,Andhra Pradesh,1,24,5,65
 West Godavari,Andhra Pradesh,2,26,5,60
 West Godavari,Andhra Pradesh,3,29,8,58
